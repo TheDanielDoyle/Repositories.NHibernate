@@ -53,9 +53,19 @@ namespace Repositories.NHibernate
             return await _session.QueryOver<TEntity>().Where(predicate).ListAsync(cancellation).ConfigureAwait(false);
         }
 
+        public async Task<IEnumerable<TEntity>> QueryAsync(Expression<Func<TEntity, bool>> predicate, int skip, int take, CancellationToken cancellation = new CancellationToken())
+        {
+            return await _session.QueryOver<TEntity>().Where(predicate).Skip(skip).Take(take).ListAsync(cancellation).ConfigureAwait(false);;
+        }
+
         public async Task<IEnumerable<TEntity>> QueryAsync(IRepositoryQuery<TEntity> query, CancellationToken cancellation = default)
         {
             return await _session.QueryOver<TEntity>().Where(query.GetQuery()).ListAsync(cancellation).ConfigureAwait(false);
+        }
+
+        public async Task<IEnumerable<TEntity>> QueryAsync(IRepositoryQuery<TEntity> query, int skip, int take, CancellationToken cancellation = new CancellationToken())
+        {
+            return await _session.QueryOver<TEntity>().Where(query.GetQuery()).Skip(skip).Take(take).ListAsync(cancellation).ConfigureAwait(false);
         }
 
         public Task RemoveAsync(TEntity entity, CancellationToken cancellation = default)
@@ -67,7 +77,7 @@ namespace Repositories.NHibernate
         {
             foreach (TEntity entity in entities)
             {
-                await _session.DeleteAsync(entity, cancellation);
+                await _session.DeleteAsync(entity, cancellation).ConfigureAwait(false);
             }
         }
 

@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="NHibernate" Version="5.2.7" />
-    <PackageReference Include="TheDanielDoyle.Repositories.Abstractions" Version="2.0.0" />
+    <PackageReference Include="TheDanielDoyle.Repositories.Abstractions" Version="2.1.0" />
   </ItemGroup>
 
 </Project>
