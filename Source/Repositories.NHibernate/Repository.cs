@@ -48,6 +48,11 @@ namespace Repositories.NHibernate
             return await query.Hydrate(Hydrate(this.session.Query<TEntity>()).Where(query.GetQuery())).ToListAsync(cancellation).ConfigureAwait(false);
         }
 
+        public async Task<TEntity> QuerySingleAsync(IRepositoryQuery<TEntity> query, CancellationToken cancellation = default)
+        {
+            return await query.Hydrate(Hydrate(this.session.Query<TEntity>()).Where(query.GetQuery())).FirstOrDefaultAsync(cancellation).ConfigureAwait(false);
+        }
+
         public Task RemoveAsync(TEntity entity, CancellationToken cancellation = default)
         {
             return this.session.DeleteAsync(entity, cancellation);
