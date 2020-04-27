@@ -45,12 +45,12 @@ namespace Repositories.NHibernate
 
         public async Task<IEnumerable<TEntity>> QueryAsync(IRepositoryQuery<TEntity> query, CancellationToken cancellation = default)
         {
-            return await query.Hydrate(Hydrate(this.session.Query<TEntity>()).Where(query.GetQuery())).ToListAsync(cancellation).ConfigureAwait(false);
+            return await query.ProjectTo(this.session.Query<TEntity>().Where(query.GetQuery())).ToListAsync(cancellation).ConfigureAwait(false);
         }
 
         public async Task<TEntity> QuerySingleAsync(IRepositoryQuery<TEntity> query, CancellationToken cancellation = default)
         {
-            return await query.Hydrate(Hydrate(this.session.Query<TEntity>()).Where(query.GetQuery())).FirstOrDefaultAsync(cancellation).ConfigureAwait(false);
+            return await query.ProjectTo(this.session.Query<TEntity>()).Where(query.GetQuery()).FirstOrDefaultAsync(cancellation).ConfigureAwait(false);
         }
 
         public Task RemoveAsync(TEntity entity, CancellationToken cancellation = default)
@@ -90,11 +90,6 @@ namespace Repositories.NHibernate
             {
                 await this.session.UpdateAsync(entity, cancellation).ConfigureAwait(false);
             }
-        }
-
-        protected virtual IQueryable<TEntity> Hydrate(IQueryable<TEntity> queryable)
-        {
-            return queryable;
         }
     }
 }
