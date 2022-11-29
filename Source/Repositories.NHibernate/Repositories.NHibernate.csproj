@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>Repositories.NHibernate</RootNamespace>
     <Authors>Daniel P. Doyle</Authors>
     <Product>Repository NHibernate</Product>
