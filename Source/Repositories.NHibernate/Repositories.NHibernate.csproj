@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NHibernate" Version="5.4.0" />
+    <PackageReference Include="NHibernate" Version="5.4.9" />
     <PackageReference Include="TheDanielDoyle.Repositories.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
