@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <RootNamespace>Repositories.NHibernate</RootNamespace>
     <Authors>Daniel P. Doyle</Authors>
     <Product>Repository NHibernate</Product>
@@ -13,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NHibernate" Version="5.5.1" />
-    <PackageReference Include="TheDanielDoyle.Repositories.Abstractions" Version="8.0.0" />
+    <PackageReference Include="NHibernate" Version="5.5.2" />
+    <PackageReference Include="TheDanielDoyle.Repositories.Abstractions" Version="9.0.0" />
   </ItemGroup>
 
 </Project>
